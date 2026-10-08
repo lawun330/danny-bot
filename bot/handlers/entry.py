@@ -96,6 +96,22 @@ async def handle_entry_text(message: Message, context, user: dict) -> None:
                 reply_markup=back_cancel(lang),
             )
             return
+        draft["suggested"] = amount
+        await _ask_income_confirm(message, context, user, amount)
+        return
+
+    if state == states.AWAIT_INCOME_CONFIRM:
+        if is_label(lang, "common.confirm", text):
+            draft["amount"] = draft["suggested"]
+            await _save(message, context, user, draft)
+            return
+        amount = parse_positive_number(text)
+        if amount is None:
+            await message.reply_text(
+                t(lang, "errors.bad_number"),
+                reply_markup=confirm_amount_keyboard(lang),
+            )
+            return
         draft["amount"] = amount
         await _save(message, context, user, draft)
         return
@@ -168,7 +184,13 @@ async def _handle_back(message, context, user, state, draft) -> None:
         return
     if state == states.AWAIT_INCOME_AMOUNT:
         draft["amount"] = None
+        draft["suggested"] = None
         await _ask_income_name(message, context, lang)
+        return
+    if state == states.AWAIT_INCOME_CONFIRM:
+        draft["amount"] = None
+        draft["suggested"] = None
+        await _ask_income_amount(message, context, lang)
         return
     if state == states.AWAIT_OUTCOME_NAME:
         clear_flow(context)
@@ -202,6 +224,20 @@ async def _ask_outcome_name(message: Message, context, lang: str) -> None:
 async def _ask_income_amount(message: Message, context, lang: str) -> None:
     context.user_data["state"] = states.AWAIT_INCOME_AMOUNT
     await message.reply_text(t(lang, "income.ask_amount"), reply_markup=back_cancel(lang))
+
+
+async def _ask_income_confirm(message: Message, context, user: dict, amount) -> None:
+    lang = lang_of(user)
+    context.user_data["state"] = states.AWAIT_INCOME_CONFIRM
+    await message.reply_text(
+        t(
+            lang,
+            "income.confirm_amount",
+            amount=format_number(amount),
+            currency=user["currency"],
+        ),
+        reply_markup=confirm_amount_keyboard(lang),
+    )
 
 
 async def _ask_units(message: Message, context, lang: str) -> None:

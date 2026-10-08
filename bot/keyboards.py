@@ -4,7 +4,7 @@ from calendar import Calendar
 
 from telegram import KeyboardButton, ReplyKeyboardMarkup
 
-from bot.i18n import t
+from bot.i18n import t, t_list
 from bot.ledger import Entry, format_number, shift_month
 
 PAGE_SIZE = 6
@@ -132,6 +132,32 @@ def calendar_keyboard(lang: str, year: int, month: int) -> ReplyKeyboardMarkup:
 
 def month_nav_targets(year: int, month: int) -> tuple[tuple[int, int], tuple[int, int]]:
     return shift_month(year, month, -1), shift_month(year, month, 1)
+
+
+def months_newest_first(year: int, current_year: int, current_month: int) -> list[int]:
+    top = current_month if year == current_year else 12
+    if year > current_year:
+        return []
+    return list(range(top, 0, -1))
+
+
+def month_picker_keyboard(
+    lang: str,
+    year: int,
+    current_year: int,
+    current_month: int,
+) -> tuple[ReplyKeyboardMarkup, dict[str, str]]:
+    names = t_list(lang, "list.months")
+    rows: list[list[str]] = [[t(lang, "common.prev_year"), t(lang, "common.next_year")]]
+    button_map: dict[str, str] = {}
+    for month in months_newest_first(year, current_year, current_month):
+        stamp = f"{year:04d}-{month:02d}"
+        name = names[month - 1] if month - 1 < len(names) else stamp
+        label = f"{name} ({stamp})"
+        button_map[label] = stamp
+        rows.append([label])
+    rows.append(nav_row(lang))
+    return _markup(rows), button_map
 
 
 def row_picker(

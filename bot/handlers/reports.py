@@ -2,22 +2,30 @@
 
 import asyncio
 import logging
+import re
 
 from telegram import Message
 
-from bot import sheets
+from bot import sheets, states
 from bot.handlers.common import (
+    cancel_to_menu,
+    clear_flow,
     format_entry,
+    is_back,
+    is_cancel,
     lang_of,
     now_local,
     reply_sheet_error,
+    send_menu,
     split_text,
 )
 from bot.i18n import t
-from bot.keyboards import main_menu
+from bot.keyboards import is_label, main_menu, month_picker_keyboard
 from bot.ledger import filter_entries, format_number, totals
 
 logger = logging.getLogger(__name__)
+
+_YEAR_MONTH = re.compile(r"^\d{4}-\d{2}$")
 
 
 async def show_today(message: Message, user: dict) -> None:
@@ -30,13 +38,55 @@ async def show_today(message: Message, user: dict) -> None:
     await _send_list(message, user, title, matched)
 
 
-async def show_month(message: Message, user: dict) -> None:
-    month = now_local().strftime("%Y-%m")
+async def begin_month_picker(message: Message, context, user: dict) -> None:
+    clear_flow(context)
+    today = now_local()
+    context.user_data["state"] = states.AWAIT_MONTH_PICK
+    context.user_data["month_pick"] = {"year": today.year}
+    await _show_month_picker(message, context, user)
+
+
+async def handle_month_pick_text(message: Message, context, user: dict) -> None:
+    lang = lang_of(user)
+    text = message.text or ""
+    pick = context.user_data.setdefault("month_pick", {"year": now_local().year})
+    today = now_local()
+
+    if is_cancel(lang, text) or is_back(lang, text):
+        if is_cancel(lang, text):
+            await cancel_to_menu(message, context, user)
+        else:
+            clear_flow(context)
+            await send_menu(message, user)
+        return
+
+    if is_label(lang, "common.prev_year", text):
+        pick["year"] = int(pick["year"]) - 1
+        await _show_month_picker(message, context, user)
+        return
+
+    if is_label(lang, "common.next_year", text):
+        next_year = int(pick["year"]) + 1
+        if next_year > today.year:
+            await _show_month_picker(message, context, user)
+            return
+        pick["year"] = next_year
+        await _show_month_picker(message, context, user)
+        return
+
+    stamp = pick.get("button_map", {}).get(text)
+    if stamp is None and _YEAR_MONTH.match(text):
+        stamp = text
+    if stamp is None:
+        await _show_month_picker(message, context, user)
+        return
+
     entries = await _load(message, user)
     if entries is None:
         return
-    matched = filter_entries(entries, year_month=month)
-    title = t(lang_of(user), "list.month_title", month=month)
+    matched = filter_entries(entries, year_month=stamp)
+    title = t(lang, "list.month_title", month=stamp)
+    clear_flow(context)
     await _send_list(message, user, title, matched)
 
 
@@ -69,6 +119,20 @@ async def show_balance(message: Message, user: dict) -> None:
             ]
         )
     await message.reply_text(text, reply_markup=main_menu(lang))
+
+
+async def _show_month_picker(message: Message, context, user: dict) -> None:
+    lang = lang_of(user)
+    today = now_local()
+    pick = context.user_data["month_pick"]
+    year = int(pick["year"])
+    markup, button_map = month_picker_keyboard(lang, year, today.year, today.month)
+    pick["button_map"] = button_map
+    context.user_data["state"] = states.AWAIT_MONTH_PICK
+    await message.reply_text(
+        t(lang, "list.pick_month", year=year),
+        reply_markup=markup,
+    )
 
 
 async def _load(message: Message, user: dict):

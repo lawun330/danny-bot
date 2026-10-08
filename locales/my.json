@@ -22,24 +22,25 @@
     "no_credentials": "ဘော့တ်တွင် Google ဝန်ဆောင်မှုအကောင့် သော့ မရှိပါ။"
   },
   "menu": {
-    "income": "ဝင်ငွေ",
-    "outcome": "ထွက်ငွေ",
-    "today": "ယနေ့",
-    "month": "ယခုလ",
-    "balance": "လက်ကျန်ငွေ",
-    "delete": "ဖျက်မည်",
+    "income": "ဝင်ငွေ ထည့်မည်",
+    "outcome": "ထွက်ငွေ ထည့်မည်",
+    "today": "ယနေ့ အသုံးစရိတ်",
+    "month": "လစဉ် အသုံးစရိတ်",
+    "balance": "စုစုပေါင်း လက်ကျန်",
+    "delete": "အတန်းများ ဖျက်မည်",
     "settings": "ဆက်တင်"
   },
   "income": {
-    "ask_name": "အမည်က ဘာလဲ။",
-    "ask_amount": "ပမာဏ ဘယ်လောက်လဲ။",
+    "ask_name": "ဒီဝင်ငွေအတွက် ဖော်ပြချက်က ဘာလဲ။",
+    "ask_amount": "စုစုပေါင်း ပမာဏ ဘယ်လောက်လဲ။",
+    "confirm_amount": "ပမာဏမှာ {amount} {currency} ဖြစ်သည်။ အတည်ပြုပါ၊ သို့မဟုတ် အခြားပမာဏ ရိုက်ပါ။",
     "saved": "ဝင်ငွေ သိမ်းပြီးပါပြီ။ {name}၊ {amount} {currency}။"
   },
   "outcome": {
-    "ask_name": "အမည်က ဘာလဲ။",
+    "ask_name": "ဒီထွက်ငွေအတွက် ဖော်ပြချက်က ဘာလဲ။",
     "ask_units": "ယူနစ် အရေအတွက် ဘယ်လောက်လဲ။",
-    "ask_price": "ယူနစ် တစ်ခုချင်းစျေး ဘယ်လောက်လဲ။",
-    "ask_amount": "ပမာဏ ဘယ်လောက်လဲ။",
+    "ask_price": "ယူနစ် တစ်ခုချင်း ပမာဏ ဘယ်လောက်လဲ။",
+    "ask_amount": "စုစုပေါင်း ပမာဏ ဘယ်လောက်လဲ။",
     "confirm_amount": "ပမာဏမှာ {amount} {currency} ဖြစ်သည်။ အတည်ပြုပါ၊ သို့မဟုတ် အခြားပမာဏ ရိုက်ပါ။",
     "saved": "ထွက်ငွေ သိမ်းပြီးပါပြီ။ {name}၊ {amount} {currency}။"
   },
@@ -58,12 +59,16 @@
     "next": "နောက်လ",
     "page_prev": "ယခင်",
     "page_next": "နောက်",
+    "prev_year": "ယခင်နှစ်",
+    "next_year": "နောက်နှစ်",
     "income_type": "ဝင်ငွေ",
     "outcome_type": "ထွက်ငွေ"
   },
   "list": {
     "today_title": "ယနေ့ ({date})",
-    "month_title": "ယခုလ ({month})",
+    "month_title": "လ ({month})",
+    "pick_month": "{year} အတွက် လကို ရွေးပါ။",
+    "months": ["ဇန်နဝါရီ", "ဖေဖော်ဝါရီ", "မတ်", "ဧပြီ", "မေ", "ဇွန်", "ဇူလိုင်", "ဩဂုတ်", "စက်တင်ဘာ", "အောက်တိုဘာ", "နိုဝင်ဘာ", "ဒီဇင်ဘာ"],
     "empty": "စာရင်း မရှိပါ။",
     "line": "{date} {time}\n{name} · {type}\n{detail}",
     "detail_units": "{units} × {price} {currency} · {amount} {currency}",
@@ -80,7 +85,7 @@
     "ask_date": "ဘယ်ရက်လဲ။\n{month}",
     "selected_date": "{date} ကို ရွေးလိုက်ပါပြီ။",
     "ask_type": "ဝင်ငွေလား၊ ထွက်ငွေလား။",
-    "ask_name": "အမည်က ဘာလဲ။",
+    "ask_name": "ဖော်ပြချက်က ဘာလဲ။",
     "pick": "ဖျက်မည့် အတန်းများကို ရွေးပါ။\n{page}",
     "confirm": "အတန်း {count} ခုကို ဖျက်မလား။",
     "done": "အတန်း {count} ခု ဖျက်ပြီးပါပြီ။",
@@ -90,18 +95,18 @@
   },
   "settings": {
     "title": "ဆက်တင်",
-    "currency": "ငွေကြေး",
-    "language": "ဘာသာစကား",
-    "nickname": "ခေါ်မည့်အမည်",
-    "sheet": "Google Sheet",
+    "currency": "ငွေကြေး ပြောင်းမည်",
+    "language": "ဘာသာစကား ပြောင်းမည်",
+    "nickname": "အမည် ပြောင်းမည်",
+    "sheet": "Google Sheet ပြောင်းမည်",
     "ask_currency": "ပမာဏနောက်တွင် ပြမည့် ငွေကြေးကို ပို့ပါ။ ဥပမာ MMK။",
-    "currency_saved": "ငွေကြေးကို {currency} အဖြစ် သတ်မှတ်ပြီးပါပြီ။",
+    "currency_saved": "ငွေကြေးကို {currency} အဖြစ် အပ်ဒိတ်လုပ်ပြီးပါပြီ။",
     "ask_nickname": "သင့်ကို ဘယ်လို ခေါ်ရမလဲ။",
     "nickname_saved": "သင့်ကို {name} ဟု ခေါ်ပါမည်။",
     "pick_language": "ဘာသာစကား ရွေးပါ။",
     "language_saved": "ဘာသာစကား ပြောင်းပြီးပါပြီ။",
     "confirm_sheet": "ချိတ်ထားသော Google Sheet ကို အစားထိုးမလား။ ရှီ့အဟောင်းကို မပြင်ပါ။",
-    "sheet_kept": "လက်ရှိ Google Sheet ကို ဆက်သုံးပါမည်။"
+    "sheet_kept": "Google Sheet ကို အပ်ဒိတ် မလုပ်ပါ။"
   },
   "calendar": {
     "weekdays": ["လာ", "ဂါ", "ဟူး", "တေး", "သော", "စနေ", "နွေ"]

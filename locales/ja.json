@@ -22,24 +22,25 @@
     "no_credentials": "ボットに Google サービスアカウントの鍵がありません。"
   },
   "menu": {
-    "income": "収入",
-    "outcome": "支出",
-    "today": "今日",
-    "month": "今月",
-    "balance": "残高",
-    "delete": "削除",
+    "income": "収入を追加",
+    "outcome": "支出を追加",
+    "today": "今日の支出",
+    "month": "月次の支出",
+    "balance": "合計残高",
+    "delete": "行を削除",
     "settings": "設定"
   },
   "income": {
-    "ask_name": "名前は何ですか？",
-    "ask_amount": "金額はいくらですか？",
+    "ask_name": "この収入の説明は何ですか？",
+    "ask_amount": "合計金額はいくらですか？",
+    "confirm_amount": "金額は {amount} {currency} です。確認するか、別の金額を入力してください。",
     "saved": "収入を保存しました: {name}、{amount} {currency}。"
   },
   "outcome": {
-    "ask_name": "名前は何ですか？",
+    "ask_name": "この支出の説明は何ですか？",
     "ask_units": "数量はいくつですか？",
     "ask_price": "単価はいくらですか？",
-    "ask_amount": "金額はいくらですか？",
+    "ask_amount": "合計金額はいくらですか？",
     "confirm_amount": "金額は {amount} {currency} です。確認するか、別の金額を入力してください。",
     "saved": "支出を保存しました: {name}、{amount} {currency}。"
   },
@@ -58,12 +59,16 @@
     "next": "次の月",
     "page_prev": "前へ",
     "page_next": "次へ",
+    "prev_year": "前の年",
+    "next_year": "次の年",
     "income_type": "収入",
     "outcome_type": "支出"
   },
   "list": {
     "today_title": "今日 ({date})",
-    "month_title": "今月 ({month})",
+    "month_title": "月 ({month})",
+    "pick_month": "{year} 年の月を選んでください。",
+    "months": ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
     "empty": "取引はありません。",
     "line": "{date} {time}\n{name} · {type}\n{detail}",
     "detail_units": "{units} × {price} {currency} · {amount} {currency}",
@@ -80,7 +85,7 @@
     "ask_date": "日付はいつですか？\n{month}",
     "selected_date": "{date} を選びました。",
     "ask_type": "収入ですか、支出ですか？",
-    "ask_name": "名前は何ですか？",
+    "ask_name": "説明は何ですか？",
     "pick": "削除する行を選んでください。\n{page}",
     "confirm": "{count} 行を削除しますか？",
     "done": "{count} 行を削除しました。",
@@ -90,18 +95,18 @@
   },
   "settings": {
     "title": "設定",
-    "currency": "通貨",
-    "language": "言語",
-    "nickname": "呼び名",
-    "sheet": "Google シート",
+    "currency": "通貨を変更",
+    "language": "言語を変更",
+    "nickname": "呼び名を変更",
+    "sheet": "Google シートを変更",
     "ask_currency": "金額のうしろに表示する通貨を送ってください。例: MMK。",
-    "currency_saved": "通貨を {currency} に設定しました。",
+    "currency_saved": "通貨を {currency} に更新しました。",
     "ask_nickname": "何とお呼びすればよいですか？",
     "nickname_saved": "{name} とお呼びします。",
     "pick_language": "言語を選んでください。",
     "language_saved": "言語を更新しました。",
     "confirm_sheet": "連携中の Google シートを替えますか？古いスプレッドシートは変更しません。",
-    "sheet_kept": "今の Google シートのままにしました。"
+    "sheet_kept": "Google シートは更新されていません。"
   },
   "calendar": {
     "weekdays": ["月", "火", "水", "木", "金", "土", "日"]

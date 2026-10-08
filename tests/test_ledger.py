@@ -6,6 +6,7 @@ from decimal import Decimal
 from pathlib import Path
 
 from bot import db, i18n
+from bot.keyboards import months_newest_first
 from bot.ledger import (
     Entry,
     default_name,
@@ -114,6 +115,11 @@ class LedgerTests(unittest.TestCase):
         self.assertEqual(shift_month(2026, 1, -1), (2025, 12))
         self.assertEqual(shift_month(2026, 12, 1), (2027, 1))
 
+    def test_months_newest_first(self):
+        self.assertEqual(months_newest_first(2026, 2026, 10), list(range(10, 0, -1)))
+        self.assertEqual(months_newest_first(2025, 2026, 10), list(range(12, 0, -1)))
+        self.assertEqual(months_newest_first(2027, 2026, 10), [])
+
     def test_sheet_values_and_delete_order(self):
         values = [
             ["Date", "Time", "Name", "Type", "Unit Amount", "Units", "Amount"],
@@ -155,9 +161,11 @@ class LedgerTests(unittest.TestCase):
         for code, catalog in catalogs.items():
             self.assertEqual(keys(catalog), english, code)
         self.assertIn("menu.income", english)
-        self.assertEqual(i18n.t("en", "menu.income"), "Income")
+        self.assertEqual(i18n.t("en", "menu.income"), "Add Income")
         self.assertEqual(i18n.t("missing", "menu.delete"), i18n.t("en", "menu.delete"))
         self.assertEqual(len(i18n.t_list("ja", "calendar.weekdays")), 7)
+        self.assertEqual(len(i18n.t_list("en", "list.months")), 12)
+        self.assertIn("confirm_amount", i18n._lookup("en", "income"))
 
     def test_user_settings_roundtrip(self):
         import tempfile

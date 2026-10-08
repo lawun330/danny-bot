@@ -22,24 +22,25 @@
     "no_credentials": "The Google service account key is missing on the bot."
   },
   "menu": {
-    "income": "Income",
-    "outcome": "Outcome",
-    "today": "Today",
-    "month": "This month",
-    "balance": "Remaining balance",
-    "delete": "Delete",
+    "income": "Add Income",
+    "outcome": "Add Outcome",
+    "today": "Today Expenses",
+    "month": "Monthly Expenses",
+    "balance": "Total Balance",
+    "delete": "Delete Rows",
     "settings": "Settings"
   },
   "income": {
-    "ask_name": "What is the name?",
-    "ask_amount": "What is the amount?",
+    "ask_name": "What is the description for this income?",
+    "ask_amount": "What is the total amount?",
+    "confirm_amount": "Amount is {amount} {currency}. Confirm, or type a different amount.",
     "saved": "Saved income: {name}, {amount} {currency}."
   },
   "outcome": {
-    "ask_name": "What is the name?",
+    "ask_name": "What is the description for this outcome?",
     "ask_units": "How many units?",
-    "ask_price": "What is the unit price?",
-    "ask_amount": "What is the amount?",
+    "ask_price": "What is the unit amount?",
+    "ask_amount": "What is the total amount?",
     "confirm_amount": "Amount is {amount} {currency}. Confirm, or type a different amount.",
     "saved": "Saved outcome: {name}, {amount} {currency}."
   },
@@ -58,12 +59,16 @@
     "next": "Next month",
     "page_prev": "Previous",
     "page_next": "Next",
+    "prev_year": "Previous year",
+    "next_year": "Next year",
     "income_type": "Income",
     "outcome_type": "Outcome"
   },
   "list": {
     "today_title": "Today ({date})",
-    "month_title": "This month ({month})",
+    "month_title": "Month ({month})",
+    "pick_month": "Pick a month for {year}.",
+    "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
     "empty": "No transactions.",
     "line": "{date} {time}\n{name} · {type}\n{detail}",
     "detail_units": "{units} × {price} {currency} · {amount} {currency}",
@@ -80,7 +85,7 @@
     "ask_date": "Which date?\n{month}",
     "selected_date": "You selected {date}.",
     "ask_type": "Income or outcome?",
-    "ask_name": "Which name?",
+    "ask_name": "What is the description?",
     "pick": "Select rows to delete.\n{page}",
     "confirm": "Delete {count} row(s)?",
     "done": "Deleted {count} row(s).",
@@ -90,18 +95,18 @@
   },
   "settings": {
     "title": "Settings",
-    "currency": "Currency",
-    "language": "Language",
-    "nickname": "Name",
-    "sheet": "Google Sheet",
+    "currency": "Change Currency",
+    "language": "Change Language",
+    "nickname": "Change Name",
+    "sheet": "Change Google Sheet",
     "ask_currency": "Send the currency to show after amounts, such as MMK.",
-    "currency_saved": "Currency set to {currency}.",
+    "currency_saved": "Currency updated to {currency}.",
     "ask_nickname": "What should I call you?",
     "nickname_saved": "I will call you {name}.",
-    "pick_language": "Choose a language.",
+    "pick_language": "Select a language.",
     "language_saved": "Language updated.",
     "confirm_sheet": "Replace the linked Google Sheet? The old spreadsheet will not be changed.",
-    "sheet_kept": "Kept the current Google Sheet."
+    "sheet_kept": "The Google Sheet is not updated."
   },
   "calendar": {
     "weekdays": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]

@@ -15,7 +15,12 @@ from bot.handlers.onboarding import (
     handle_nickname,
     handle_sheet_url,
 )
-from bot.handlers.reports import show_balance, show_month, show_today
+from bot.handlers.reports import (
+    begin_month_picker,
+    handle_month_pick_text,
+    show_balance,
+    show_today,
+)
 from bot.handlers.settings import begin_settings, handle_settings_text
 from bot.i18n import t
 from bot.keyboards import main_menu, menu_action
@@ -25,6 +30,7 @@ logger = logging.getLogger(__name__)
 _ENTRY_STATES = {
     states.AWAIT_INCOME_NAME,
     states.AWAIT_INCOME_AMOUNT,
+    states.AWAIT_INCOME_CONFIRM,
     states.AWAIT_OUTCOME_NAME,
     states.AWAIT_OUTCOME_UNITS,
     states.AWAIT_OUTCOME_PRICE,
@@ -99,6 +105,9 @@ async def on_text(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         if state in _DELETE_STATES:
             await handle_delete_text(message, context, user)
             return
+        if state == states.AWAIT_MONTH_PICK:
+            await handle_month_pick_text(message, context, user)
+            return
         if db.is_ready(user):
             action = menu_action(lang, text)
             if action:
@@ -124,8 +133,7 @@ async def _on_menu(message, context, user: dict, action: str) -> None:
         clear_flow(context)
         await show_today(message, user)
     elif action == "month":
-        clear_flow(context)
-        await show_month(message, user)
+        await begin_month_picker(message, context, user)
     elif action == "balance":
         clear_flow(context)
         await show_balance(message, user)

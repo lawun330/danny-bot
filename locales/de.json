@@ -22,24 +22,25 @@
     "no_credentials": "Der Google-Dienstkonto-Schlüssel fehlt auf dem Bot."
   },
   "menu": {
-    "income": "Einnahme",
-    "outcome": "Ausgabe",
-    "today": "Heute",
-    "month": "Dieser Monat",
-    "balance": "Restguthaben",
-    "delete": "Löschen",
+    "income": "Einnahme hinzufügen",
+    "outcome": "Ausgabe hinzufügen",
+    "today": "Heutige Ausgaben",
+    "month": "Monatliche Ausgaben",
+    "balance": "Gesamtsaldo",
+    "delete": "Zeilen löschen",
     "settings": "Einstellungen"
   },
   "income": {
-    "ask_name": "Wie lautet der Name?",
-    "ask_amount": "Wie hoch ist der Betrag?",
+    "ask_name": "Wie lautet die Beschreibung für diese Einnahme?",
+    "ask_amount": "Wie hoch ist der Gesamtbetrag?",
+    "confirm_amount": "Der Betrag ist {amount} {currency}. Bestätige ihn oder gib einen anderen Betrag ein.",
     "saved": "Einnahme gespeichert: {name}, {amount} {currency}."
   },
   "outcome": {
-    "ask_name": "Wie lautet der Name?",
+    "ask_name": "Wie lautet die Beschreibung für diese Ausgabe?",
     "ask_units": "Wie viele Einheiten?",
-    "ask_price": "Wie hoch ist der Einzelpreis?",
-    "ask_amount": "Wie hoch ist der Betrag?",
+    "ask_price": "Wie hoch ist der Einzelbetrag?",
+    "ask_amount": "Wie hoch ist der Gesamtbetrag?",
     "confirm_amount": "Der Betrag ist {amount} {currency}. Bestätige ihn oder gib einen anderen Betrag ein.",
     "saved": "Ausgabe gespeichert: {name}, {amount} {currency}."
   },
@@ -58,12 +59,16 @@
     "next": "Nächster Monat",
     "page_prev": "Vorherige",
     "page_next": "Nächste",
+    "prev_year": "Voriges Jahr",
+    "next_year": "Nächstes Jahr",
     "income_type": "Einnahme",
     "outcome_type": "Ausgabe"
   },
   "list": {
     "today_title": "Heute ({date})",
-    "month_title": "Dieser Monat ({month})",
+    "month_title": "Monat ({month})",
+    "pick_month": "Wähle einen Monat für {year}.",
+    "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
     "empty": "Keine Buchungen.",
     "line": "{date} {time}\n{name} · {type}\n{detail}",
     "detail_units": "{units} × {price} {currency} · {amount} {currency}",
@@ -80,7 +85,7 @@
     "ask_date": "Welches Datum?\n{month}",
     "selected_date": "Du hast {date} gewählt.",
     "ask_type": "Einnahme oder Ausgabe?",
-    "ask_name": "Welcher Name?",
+    "ask_name": "Wie lautet die Beschreibung?",
     "pick": "Wähle die Zeilen zum Löschen.\n{page}",
     "confirm": "{count} Zeile(n) löschen?",
     "done": "{count} Zeile(n) gelöscht.",
@@ -90,18 +95,18 @@
   },
   "settings": {
     "title": "Einstellungen",
-    "currency": "Währung",
-    "language": "Sprache",
-    "nickname": "Name",
-    "sheet": "Google Sheet",
+    "currency": "Währung ändern",
+    "language": "Sprache ändern",
+    "nickname": "Name ändern",
+    "sheet": "Google Sheet ändern",
     "ask_currency": "Sende die Währung, die nach Beträgen stehen soll, zum Beispiel MMK.",
-    "currency_saved": "Währung ist jetzt {currency}.",
+    "currency_saved": "Währung aktualisiert auf {currency}.",
     "ask_nickname": "Wie soll ich dich nennen?",
     "nickname_saved": "Ich nenne dich {name}.",
     "pick_language": "Wähle eine Sprache.",
     "language_saved": "Sprache aktualisiert.",
     "confirm_sheet": "Das verknüpfte Google Sheet ersetzen? Das alte Spreadsheet wird nicht verändert.",
-    "sheet_kept": "Das aktuelle Google Sheet bleibt verknüpft."
+    "sheet_kept": "Das Google Sheet wurde nicht aktualisiert."
   },
   "calendar": {
     "weekdays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
