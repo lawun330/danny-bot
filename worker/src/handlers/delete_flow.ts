@@ -57,23 +57,17 @@ function freshDelete(ctx: BotContext): DeleteState {
   };
 }
 
-export async function beginDelete(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function beginDelete(ctx: BotContext, user: UserRow): Promise<void> {
   clearFlow(ctx.session);
   ctx.session.state = states.AWAIT_DELETE_DATE;
   ctx.session.delete = freshDelete(ctx);
   await askDate(ctx, langOf(user));
 }
 
-export async function handleDeleteText(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function handleDeleteText(ctx: BotContext, user: UserRow): Promise<void> {
   const state = ctx.session.state as string | undefined;
   const lang = langOf(user);
-  let deleteState = ctx.session.delete as DeleteState | undefined;
+  const deleteState = ctx.session.delete as DeleteState | undefined;
   const text = ctx.message?.text ?? "";
   if (!deleteState) {
     await beginDelete(ctx, user);
@@ -149,10 +143,9 @@ export async function handleDeleteText(
       await showPicker(ctx, user, deleteState);
       return;
     }
-    await ctx.reply(
-      t(lang, "delete.confirm", { count: deleteState.selected.length }),
-      { reply_markup: yesNo(lang) },
-    );
+    await ctx.reply(t(lang, "delete.confirm", { count: deleteState.selected.length }), {
+      reply_markup: yesNo(lang),
+    });
   }
 }
 
@@ -232,11 +225,7 @@ async function handleDate(
   const parsed = parseIsoDate(text);
   if (parsed == null) {
     await ctx.reply(t(lang, "errors.bad_date"), {
-      reply_markup: calendarKeyboard(
-        lang,
-        deleteState.year,
-        deleteState.month,
-      ),
+      reply_markup: calendarKeyboard(lang, deleteState.year, deleteState.month),
     });
     return;
   }
@@ -262,10 +251,9 @@ async function handlePick(
       return;
     }
     ctx.session.state = states.AWAIT_DELETE_CONFIRM;
-    await ctx.reply(
-      t(lang, "delete.confirm", { count: deleteState.selected.length }),
-      { reply_markup: yesNo(lang) },
-    );
+    await ctx.reply(t(lang, "delete.confirm", { count: deleteState.selected.length }), {
+      reply_markup: yesNo(lang),
+    });
     return;
   }
   if (isLabel(lang, "common.page_prev", text)) {
@@ -365,18 +353,9 @@ async function queryAndShow(
   }
 }
 
-async function showPicker(
-  ctx: BotContext,
-  user: UserRow,
-  deleteState: DeleteState,
-): Promise<void> {
+async function showPicker(ctx: BotContext, user: UserRow, deleteState: DeleteState): Promise<void> {
   const lang = langOf(user);
-  const result = rowPicker(
-    lang,
-    deleteState.matches,
-    deleteState.selected,
-    deleteState.page,
-  );
+  const result = rowPicker(lang, deleteState.matches, deleteState.selected, deleteState.page);
   deleteState.page = result.page;
   deleteState.button_map = result.buttonMap;
   deleteState.delete_label = result.deleteLabel;
@@ -393,9 +372,7 @@ async function deleteSelected(
 ): Promise<void> {
   const lang = langOf(user);
   const selected = [...deleteState.selected];
-  const stored = new Map(
-    deleteState.matches.map((entry) => [entry.row_number, entry]),
-  );
+  const stored = new Map(deleteState.matches.map((entry) => [entry.row_number, entry]));
   if (user.spreadsheet_id == null || user.sheet_id == null) {
     await ctx.reply(t(lang, "errors.generic"), {
       reply_markup: mainMenu(lang),
@@ -408,9 +385,7 @@ async function deleteSelected(
       user.spreadsheet_id,
       user.sheet_id,
     );
-    const currentByRow = new Map(
-      current.map((entry) => [entry.row_number, entry]),
-    );
+    const currentByRow = new Map(current.map((entry) => [entry.row_number, entry]));
     for (const rowNumber of selected) {
       if (!entriesEqual(stored.get(rowNumber), currentByRow.get(rowNumber))) {
         clearFlow(ctx.session);

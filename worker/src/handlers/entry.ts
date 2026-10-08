@@ -9,13 +9,7 @@ import {
   notApplicableKeyboard,
   skipKeyboard,
 } from "../keyboards";
-import {
-  DecimalStr,
-  defaultName,
-  formatNumber,
-  multiply,
-  parsePositiveNumber,
-} from "../ledger";
+import { DecimalStr, defaultName, formatNumber, multiply, parsePositiveNumber } from "../ledger";
 import * as sheets from "../sheets";
 import * as states from "../states";
 import {
@@ -56,30 +50,21 @@ function getDraft(ctx: BotContext): Draft {
   return created;
 }
 
-export async function beginIncome(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function beginIncome(ctx: BotContext, user: UserRow): Promise<void> {
   clearFlow(ctx.session);
   ctx.session.state = states.AWAIT_INCOME_NAME;
   ctx.session.draft = blankDraft("income");
   await askIncomeName(ctx, langOf(user));
 }
 
-export async function beginOutcome(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function beginOutcome(ctx: BotContext, user: UserRow): Promise<void> {
   clearFlow(ctx.session);
   ctx.session.state = states.AWAIT_OUTCOME_NAME;
   ctx.session.draft = blankDraft("outcome");
   await askOutcomeName(ctx, langOf(user));
 }
 
-export async function handleEntryText(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function handleEntryText(ctx: BotContext, user: UserRow): Promise<void> {
   const state = ctx.session.state as string | undefined;
   const lang = langOf(user);
   const draft = getDraft(ctx);
@@ -94,10 +79,7 @@ export async function handleEntryText(
     return;
   }
 
-  if (
-    state === states.AWAIT_INCOME_NAME ||
-    state === states.AWAIT_OUTCOME_NAME
-  ) {
+  if (state === states.AWAIT_INCOME_NAME || state === states.AWAIT_OUTCOME_NAME) {
     if (isLabel(lang, "common.skip", text)) {
       draft.name = defaultName(draft.type);
     } else {
@@ -267,10 +249,7 @@ async function handleBack(
     await askUnits(ctx, lang);
     return;
   }
-  if (
-    state === states.AWAIT_OUTCOME_AMOUNT ||
-    state === states.AWAIT_OUTCOME_CONFIRM
-  ) {
+  if (state === states.AWAIT_OUTCOME_AMOUNT || state === states.AWAIT_OUTCOME_CONFIRM) {
     draft.amount = null;
     draft.suggested = null;
     ctx.session.draft = draft;
@@ -299,11 +278,7 @@ async function askIncomeAmount(ctx: BotContext, lang: string): Promise<void> {
   });
 }
 
-async function askIncomeConfirm(
-  ctx: BotContext,
-  user: UserRow,
-  amount: DecimalStr,
-): Promise<void> {
+async function askIncomeConfirm(ctx: BotContext, user: UserRow, amount: DecimalStr): Promise<void> {
   const lang = langOf(user);
   ctx.session.state = states.AWAIT_INCOME_CONFIRM;
   await ctx.reply(
@@ -336,11 +311,7 @@ async function askOutcomeAmount(ctx: BotContext, lang: string): Promise<void> {
   });
 }
 
-async function afterPrice(
-  ctx: BotContext,
-  user: UserRow,
-  draft: Draft,
-): Promise<void> {
+async function afterPrice(ctx: BotContext, user: UserRow, draft: Draft): Promise<void> {
   const lang = langOf(user);
   if (draft.units != null && draft.unit_amount != null) {
     const suggested = multiply(draft.units, draft.unit_amount);
@@ -359,11 +330,7 @@ async function afterPrice(
   await askOutcomeAmount(ctx, lang);
 }
 
-async function save(
-  ctx: BotContext,
-  user: UserRow,
-  draft: Draft,
-): Promise<void> {
+async function save(ctx: BotContext, user: UserRow, draft: Draft): Promise<void> {
   const lang = langOf(user);
   const name = draft.name || defaultName(draft.type);
   if (draft.amount == null || user.spreadsheet_id == null || user.sheet_id == null) {

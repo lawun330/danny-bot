@@ -16,12 +16,10 @@ function createBot(env: Env): Bot<BotContext> {
   bot.use(
     session({
       initial: (): BotSession => ({}),
-      getSessionKey: (ctx) =>
-        ctx.from?.id != null ? String(ctx.from.id) : undefined,
+      getSessionKey: (ctx) => (ctx.from?.id != null ? String(ctx.from.id) : undefined),
       storage: {
         read: async (key) => loadSession(env.DB, Number(key)),
-        write: async (key, value) =>
-          saveSession(env.DB, Number(key), value ?? {}),
+        write: async (key, value) => saveSession(env.DB, Number(key), value ?? {}),
         delete: async (key) => saveSession(env.DB, Number(key), {}),
       },
     }),

@@ -18,11 +18,7 @@ export function languages(): readonly string[] {
   return LANGS;
 }
 
-export function t(
-  lang: string,
-  key: string,
-  kwargs: Record<string, string | number> = {},
-): string {
+export function t(lang: string, key: string, kwargs: Record<string, string | number> = {}): string {
   let value = lookup(lang, key);
   if (typeof value !== "string") value = lookup("en", key);
   if (typeof value !== "string") return key;

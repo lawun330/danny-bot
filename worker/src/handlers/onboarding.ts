@@ -1,24 +1,11 @@
 import { BotContext } from "../context";
-import {
-  clearFlow,
-  hasSheet,
-  isReady,
-  updateUser,
-  UserRow,
-} from "../db";
+import { clearFlow, hasSheet, isReady, updateUser, UserRow } from "../db";
 import { t } from "../i18n";
 import { backCancel, cancelOnly, mainMenu } from "../keyboards";
 import { parseSpreadsheetId } from "../ledger";
 import * as sheets from "../sheets";
 import * as states from "../states";
-import {
-  cleanName,
-  isBack,
-  isCancel,
-  langOf,
-  replySheetError,
-  sendMenu,
-} from "./common";
+import { cleanName, isBack, isCancel, langOf, replySheetError, sendMenu } from "./common";
 
 export async function beginSheetQuestion(
   ctx: BotContext,
@@ -31,17 +18,12 @@ export async function beginSheetQuestion(
   if (keepReplace) ctx.session.sheet_replace = true;
   const lang = langOf(user);
   const email = sheets.serviceAccountEmail(ctx.env.GOOGLE_SERVICE_ACCOUNT_JSON);
-  const text = email
-    ? t(lang, "start.ask_sheet", { email })
-    : t(lang, "start.ask_sheet_no_email");
+  const text = email ? t(lang, "start.ask_sheet", { email }) : t(lang, "start.ask_sheet_no_email");
   const markup = keepReplace ? backCancel(lang) : cancelOnly(lang);
   await ctx.reply(text, { reply_markup: markup });
 }
 
-export async function beginNicknameQuestion(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function beginNicknameQuestion(ctx: BotContext, user: UserRow): Promise<void> {
   clearFlow(ctx.session);
   ctx.session.state = states.AWAIT_NICKNAME;
   const lang = langOf(user);
@@ -50,10 +32,7 @@ export async function beginNicknameQuestion(
   });
 }
 
-export async function handleSheetUrl(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function handleSheetUrl(ctx: BotContext, user: UserRow): Promise<void> {
   const lang = langOf(user);
   const text = ctx.message?.text ?? "";
   const replace = Boolean(ctx.session.sheet_replace);
@@ -89,10 +68,7 @@ export async function handleSheetUrl(
   }
 
   try {
-    const linked = await sheets.linkNewTab(
-      ctx.env.GOOGLE_SERVICE_ACCOUNT_JSON,
-      spreadsheetId,
-    );
+    const linked = await sheets.linkNewTab(ctx.env.GOOGLE_SERVICE_ACCOUNT_JSON, spreadsheetId);
     user = await updateUser(ctx.env.DB, user.telegram_id, {
       spreadsheet_id: linked.spreadsheetId,
       sheet_id: linked.sheetId,

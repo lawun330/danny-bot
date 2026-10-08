@@ -12,13 +12,9 @@ import {
 describe("ledger", () => {
   it("parses spreadsheet urls and bare ids", () => {
     expect(
-      parseSpreadsheetId(
-        "https://docs.google.com/spreadsheets/d/abcDEF1234567890_-/edit",
-      ),
+      parseSpreadsheetId("https://docs.google.com/spreadsheets/d/abcDEF1234567890_-/edit"),
     ).toBe("abcDEF1234567890_-");
-    expect(parseSpreadsheetId("abcDEF1234567890_-zzzz")).toBe(
-      "abcDEF1234567890_-zzzz",
-    );
+    expect(parseSpreadsheetId("abcDEF1234567890_-zzzz")).toBe("abcDEF1234567890_-zzzz");
     expect(parseSpreadsheetId("nope")).toBeNull();
   });
 

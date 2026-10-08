@@ -3,12 +3,7 @@ import { clearFlow, isReady, UserRow } from "../db";
 import { t } from "../i18n";
 import { mainMenu, menuAction } from "../keyboards";
 import * as states from "../states";
-import {
-  cancelToMenu,
-  langOf,
-  requireReady,
-  sendMenu,
-} from "./common";
+import { cancelToMenu, langOf, requireReady, sendMenu } from "./common";
 import { beginDelete, handleDeleteText } from "./delete_flow";
 import { beginIncome, beginOutcome, handleEntryText } from "./entry";
 import {
@@ -17,12 +12,7 @@ import {
   handleNickname,
   handleSheetUrl,
 } from "./onboarding";
-import {
-  beginMonthPicker,
-  handleMonthPickText,
-  showBalance,
-  showToday,
-} from "./reports";
+import { beginMonthPicker, handleMonthPickText, showBalance, showToday } from "./reports";
 import { beginSettings, handleSettingsText } from "./settings";
 
 const ENTRY_STATES = new Set([
@@ -127,11 +117,7 @@ export async function onText(ctx: BotContext): Promise<void> {
   }
 }
 
-async function onMenu(
-  ctx: BotContext,
-  user: UserRow,
-  action: string,
-): Promise<void> {
+async function onMenu(ctx: BotContext, user: UserRow, action: string): Promise<void> {
   if (!(await requireReady(ctx, user))) return;
   if (action === "income") await beginIncome(ctx, user);
   else if (action === "outcome") await beginOutcome(ctx, user);

@@ -1,19 +1,6 @@
-import {
-  DecimalStr,
-  Entry,
-  decimalToSheet,
-  parseDecimal,
-} from "./ledger";
+import { DecimalStr, Entry, decimalToSheet, parseDecimal } from "./ledger";
 
-export const HEADERS = [
-  "Date",
-  "Time",
-  "Name",
-  "Type",
-  "Unit Amount",
-  "Units",
-  "Amount",
-];
+export const HEADERS = ["Date", "Time", "Name", "Type", "Unit Amount", "Units", "Amount"];
 const BASE_TITLE = "Transactions";
 const SHEETS_SCOPE = "https://www.googleapis.com/auth/spreadsheets";
 
@@ -88,10 +75,7 @@ function pemToArrayBuffer(pem: string): ArrayBuffer {
 }
 
 function base64Url(data: ArrayBuffer | string): string {
-  const bytes =
-    typeof data === "string"
-      ? new TextEncoder().encode(data)
-      : new Uint8Array(data);
+  const bytes = typeof data === "string" ? new TextEncoder().encode(data) : new Uint8Array(data);
   let binary = "";
   for (const byte of bytes) binary += String.fromCharCode(byte);
   return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
@@ -127,17 +111,14 @@ async function getAccessToken(rawJson: string): Promise<string> {
     new TextEncoder().encode(unsigned),
   );
   const jwt = `${unsigned}.${base64Url(signature)}`;
-  const response = await fetch(
-    sa.token_uri || "https://oauth2.googleapis.com/token",
-    {
-      method: "POST",
-      headers: { "content-type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
-        assertion: jwt,
-      }),
-    },
-  );
+  const response = await fetch(sa.token_uri || "https://oauth2.googleapis.com/token", {
+    method: "POST",
+    headers: { "content-type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
+      assertion: jwt,
+    }),
+  });
   if (!response.ok) {
     throw new CredentialsMissing();
   }
@@ -177,10 +158,7 @@ interface SpreadsheetMeta {
   }>;
 }
 
-async function getSpreadsheet(
-  rawJson: string,
-  spreadsheetId: string,
-): Promise<SpreadsheetMeta> {
+async function getSpreadsheet(rawJson: string, spreadsheetId: string): Promise<SpreadsheetMeta> {
   const response = await sheetsFetch(
     rawJson,
     `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}?fields=sheets.properties(sheetId,title)`,

@@ -12,19 +12,9 @@ import {
   yesNo,
 } from "../keyboards";
 import * as states from "../states";
-import {
-  cancelToMenu,
-  cleanCurrency,
-  isBack,
-  isCancel,
-  langOf,
-  sendMenu,
-} from "./common";
+import { cancelToMenu, cleanCurrency, isBack, isCancel, langOf, sendMenu } from "./common";
 
-export async function beginSettings(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function beginSettings(ctx: BotContext, user: UserRow): Promise<void> {
   clearFlow(ctx.session);
   ctx.session.state = states.AWAIT_SETTINGS_MENU;
   const lang = langOf(user);
@@ -33,10 +23,7 @@ export async function beginSettings(
   });
 }
 
-export async function beginSheetConfirm(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function beginSheetConfirm(ctx: BotContext, user: UserRow): Promise<void> {
   clearFlow(ctx.session);
   ctx.session.state = states.AWAIT_SHEET_CONFIRM;
   const lang = langOf(user);
@@ -45,10 +32,7 @@ export async function beginSheetConfirm(
   });
 }
 
-export async function handleSettingsText(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function handleSettingsText(ctx: BotContext, user: UserRow): Promise<void> {
   const state = ctx.session.state as string | undefined;
   const lang = langOf(user);
   const text = ctx.message?.text ?? "";

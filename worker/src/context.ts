@@ -22,8 +22,7 @@ export function nowLocal(timezone: string): Date {
     second: "2-digit",
     hourCycle: "h23",
   }).formatToParts(new Date());
-  const get = (type: string) =>
-    parts.find((part) => part.type === type)?.value ?? "0";
+  const get = (type: string) => parts.find((part) => part.type === type)?.value ?? "0";
   return new Date(
     Number(get("year")),
     Number(get("month")) - 1,

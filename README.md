@@ -69,20 +69,27 @@ python -m unittest discover -s tests -v
 
 ## Lint
 
-- Ruff runs on each commit via pre-commit:
+Pre-commit runs on every commit:
 
-    ```bash
-    conda activate danny_bot_env
-    pip install pre-commit ruff
-    pre-commit install
-    ```
+- **Python:** Ruff (`check --fix` + format) for `bot/` and `tests/`
+- **TypeScript/JS:** ESLint + Prettier for `worker/`
 
-- Manual check:
+Install once:
 
-    ```bash
-    ruff check --fix bot tests
-    ruff format bot tests
-    ```
+```bash
+conda activate danny_bot_env
+pip install pre-commit ruff
+cd worker && npm install && cd ..
+pre-commit install
+```
+
+Manual:
+
+```bash
+ruff check --fix bot tests
+ruff format bot tests
+cd worker && npm run lint:fix && npm run format
+```
 
 ## Note
 

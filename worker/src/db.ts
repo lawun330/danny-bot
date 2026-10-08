@@ -23,10 +23,7 @@ function nowIso(): string {
   return new Date().toISOString();
 }
 
-export async function getUser(
-  db: D1Database,
-  telegramId: number,
-): Promise<UserRow | null> {
+export async function getUser(db: D1Database, telegramId: number): Promise<UserRow | null> {
   return (
     (await db
       .prepare("SELECT * FROM users WHERE telegram_id = ?")
@@ -35,10 +32,7 @@ export async function getUser(
   );
 }
 
-export async function ensureUser(
-  db: D1Database,
-  telegramId: number,
-): Promise<UserRow> {
+export async function ensureUser(db: D1Database, telegramId: number): Promise<UserRow> {
   const existing = await getUser(db, telegramId);
   if (existing) return existing;
   const now = nowIso();
@@ -60,12 +54,7 @@ export async function updateUser(
   fields: Partial<
     Pick<
       UserRow,
-      | "nickname"
-      | "language"
-      | "currency"
-      | "spreadsheet_id"
-      | "sheet_id"
-      | "sheet_title"
+      "nickname" | "language" | "currency" | "spreadsheet_id" | "sheet_id" | "sheet_title"
     >
   >,
 ): Promise<UserRow> {
@@ -103,10 +92,7 @@ export function isReady(user: UserRow | null): boolean {
 
 export type SessionData = Record<string, unknown>;
 
-export async function loadSession(
-  db: D1Database,
-  telegramId: number,
-): Promise<SessionData> {
+export async function loadSession(db: D1Database, telegramId: number): Promise<SessionData> {
   const row = await db
     .prepare("SELECT data FROM sessions WHERE telegram_id = ?")
     .bind(telegramId)

@@ -38,19 +38,13 @@ export async function sendMenu(ctx: BotContext, user: UserRow): Promise<void> {
   });
 }
 
-export async function requireReady(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<boolean> {
+export async function requireReady(ctx: BotContext, user: UserRow): Promise<boolean> {
   if (isReady(user)) return true;
   await ctx.reply(t(langOf(user), "errors.need_setup"));
   return false;
 }
 
-export async function cancelToMenu(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function cancelToMenu(ctx: BotContext, user: UserRow): Promise<void> {
   clearFlow(ctx.session);
   const lang = langOf(user);
   if (isReady(user)) {
@@ -70,14 +64,8 @@ export function isBack(lang: string, text: string): boolean {
   return isLabel(lang, "common.back", text);
 }
 
-export async function replySheetError(
-  ctx: BotContext,
-  lang: string,
-  exc: unknown,
-): Promise<void> {
-  const email =
-    serviceAccountEmail(ctx.env.GOOGLE_SERVICE_ACCOUNT_JSON) ||
-    "the service account";
+export async function replySheetError(ctx: BotContext, lang: string, exc: unknown): Promise<void> {
+  const email = serviceAccountEmail(ctx.env.GOOGLE_SERVICE_ACCOUNT_JSON) || "the service account";
   let text: string;
   if (exc instanceof SheetNotShared) {
     text = t(lang, "errors.not_shared", { email });

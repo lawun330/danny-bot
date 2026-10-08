@@ -43,13 +43,7 @@ export function settingsMenu(lang: string): Keyboard {
 }
 
 export function languageMenu(lang: string): Keyboard {
-  return markup([
-    ["English"],
-    ["မြန်မာ"],
-    ["Deutsch"],
-    ["日本語"],
-    navRow(lang),
-  ]);
+  return markup([["English"], ["မြန်မာ"], ["Deutsch"], ["日本語"], navRow(lang)]);
 }
 
 export function cancelOnly(lang: string): Keyboard {
@@ -110,11 +104,7 @@ function monthDaysCalendar(year: number, month: number): number[][] {
   return weeks;
 }
 
-export function calendarKeyboard(
-  lang: string,
-  year: number,
-  month: number,
-): Keyboard {
+export function calendarKeyboard(lang: string, year: number, month: number): Keyboard {
   const monthDays = monthDaysCalendar(year, month);
   const rows: string[][] = [[t(lang, "common.prev"), t(lang, "common.next")]];
   for (const week of monthDays) {
@@ -136,10 +126,7 @@ export function calendarKeyboard(
   return markup(rows);
 }
 
-export function monthNavTargets(
-  year: number,
-  month: number,
-): [[number, number], [number, number]] {
+export function monthNavTargets(year: number, month: number): [[number, number], [number, number]] {
   return [shiftMonth(year, month, -1), shiftMonth(year, month, 1)];
 }
 
@@ -162,9 +149,7 @@ export function monthPickerKeyboard(
   currentMonth: number,
 ): { keyboard: Keyboard; buttonMap: Record<string, string> } {
   const names = tList(lang, "list.months") as string[];
-  const rows: string[][] = [
-    [t(lang, "common.prev_year"), t(lang, "common.next_year")],
-  ];
+  const rows: string[][] = [[t(lang, "common.prev_year"), t(lang, "common.next_year")]];
   const buttonMap: Record<string, string> = {};
   for (const month of monthsNewestFirst(year, currentYear, currentMonth)) {
     const stamp = `${String(year).padStart(4, "0")}-${String(month).padStart(2, "0")}`;
@@ -196,8 +181,7 @@ export function rowPicker(
   const buttonMap: Record<string, number> = {};
   for (const entry of chunk) {
     const mark = selected.includes(entry.row_number) ? "☑" : "☐";
-    const name =
-      entry.name.length <= 16 ? entry.name : `${entry.name.slice(0, 15)}…`;
+    const name = entry.name.length <= 16 ? entry.name : `${entry.name.slice(0, 15)}…`;
     let label = `${mark} ${entry.date.slice(5)} ${entry.time} ${name} ${formatNumber(entry.amount)}`;
     if (label.length > 64) label = label.slice(0, 64);
     buttonMap[label] = entry.row_number;

@@ -23,10 +23,7 @@ interface MonthPick {
   button_map?: Record<string, string>;
 }
 
-export async function showToday(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function showToday(ctx: BotContext, user: UserRow): Promise<void> {
   const today = nowLocal(ctx.env.TIMEZONE || "Asia/Yangon");
   const stamp = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
   const entries = await load(ctx, user);
@@ -36,10 +33,7 @@ export async function showToday(
   await sendList(ctx, user, title, matched);
 }
 
-export async function beginMonthPicker(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function beginMonthPicker(ctx: BotContext, user: UserRow): Promise<void> {
   clearFlow(ctx.session);
   const today = nowLocal(ctx.env.TIMEZONE || "Asia/Yangon");
   ctx.session.state = states.AWAIT_MONTH_PICK;
@@ -47,10 +41,7 @@ export async function beginMonthPicker(
   await showMonthPicker(ctx, user);
 }
 
-export async function handleMonthPickText(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function handleMonthPickText(ctx: BotContext, user: UserRow): Promise<void> {
   const lang = langOf(user);
   const text = ctx.message?.text ?? "";
   const pick = (ctx.session.month_pick as MonthPick | undefined) ?? {
@@ -102,10 +93,7 @@ export async function handleMonthPickText(
   await sendList(ctx, user, title, matched);
 }
 
-export async function showBalance(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<void> {
+export async function showBalance(ctx: BotContext, user: UserRow): Promise<void> {
   const lang = langOf(user);
   const entries = await load(ctx, user);
   if (entries == null) return;
@@ -153,10 +141,7 @@ async function showMonthPicker(ctx: BotContext, user: UserRow): Promise<void> {
   });
 }
 
-async function load(
-  ctx: BotContext,
-  user: UserRow,
-): Promise<Entry[] | null> {
+async function load(ctx: BotContext, user: UserRow): Promise<Entry[] | null> {
   const lang = langOf(user);
   if (user.spreadsheet_id == null || user.sheet_id == null) {
     await ctx.reply(t(lang, "errors.generic"));
@@ -192,9 +177,7 @@ async function sendList(
     });
     return;
   }
-  const blocks = entries.map((entry) =>
-    formatEntry(entry, lang, user.currency),
-  );
+  const blocks = entries.map((entry) => formatEntry(entry, lang, user.currency));
   const parts = splitText(`${title}\n\n${blocks.join("\n\n")}`);
   const last = parts.length - 1;
   for (let index = 0; index < parts.length; index++) {

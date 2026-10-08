@@ -148,11 +148,7 @@ export function totals(entries: Entry[]): {
   };
 }
 
-export function shiftMonth(
-  year: number,
-  month: number,
-  delta: number,
-): [number, number] {
+export function shiftMonth(year: number, month: number, delta: number): [number, number] {
   const index = year * 12 + (month - 1) + delta;
   return [Math.floor(index / 12), (index % 12) + 1];
 }
