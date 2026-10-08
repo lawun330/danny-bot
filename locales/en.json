@@ -1,0 +1,109 @@
+{
+  "start": {
+    "ask_sheet": "Share your Google Sheet with {email} as Editor, then send the sheet URL.",
+    "ask_sheet_no_email": "Share your Google Sheet with the service account email as Editor, then send the sheet URL. The key file is not set up on the bot yet.",
+    "sheet_saved": "Created tab \"{title}\". Existing tabs were left unchanged.",
+    "ask_nickname": "What should I call you?",
+    "ready": "Hi {name}. What would you like to do?"
+  },
+  "errors": {
+    "bad_url": "Send a Google Sheet link, like https://docs.google.com/spreadsheets/d/...",
+    "not_shared": "I cannot open that sheet. Share it with {email} as Editor, then send the URL again.",
+    "sheet_failed": "I could not set up the sheet. Try again in a moment.",
+    "bad_number": "Send a number greater than zero.",
+    "bad_date": "Send a date as YYYY-MM-DD, or pick one below.",
+    "bad_name": "Send a name up to 100 characters.",
+    "bad_currency": "Send a currency up to 16 characters, such as MMK.",
+    "no_rows": "No matching rows.",
+    "generic": "Something went wrong. Please try again.",
+    "need_setup": "Send /start to link a Google Sheet first.",
+    "tab_missing": "The transactions tab is missing. Link a sheet again from Settings.",
+    "sheet_changed": "Those rows changed. Start Delete again.",
+    "no_credentials": "The Google service account key is missing on the bot."
+  },
+  "menu": {
+    "income": "Income",
+    "outcome": "Outcome",
+    "today": "Today",
+    "month": "This month",
+    "balance": "Remaining balance",
+    "delete": "Delete",
+    "settings": "Settings"
+  },
+  "income": {
+    "ask_name": "What is the name?",
+    "ask_amount": "What is the amount?",
+    "saved": "Saved income: {name}, {amount} {currency}."
+  },
+  "outcome": {
+    "ask_name": "What is the name?",
+    "ask_units": "How many units?",
+    "ask_price": "What is the unit price?",
+    "ask_amount": "What is the amount?",
+    "confirm_amount": "Amount is {amount} {currency}. Confirm, or type a different amount.",
+    "saved": "Saved outcome: {name}, {amount} {currency}."
+  },
+  "common": {
+    "skip": "Skip",
+    "not_applicable": "Not applicable",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "idk": "I don't know",
+    "cancel": "Cancel",
+    "cancelled": "Cancelled.",
+    "back": "Back",
+    "all": "All",
+    "prev": "Previous month",
+    "next": "Next month",
+    "page_prev": "Previous",
+    "page_next": "Next",
+    "income_type": "Income",
+    "outcome_type": "Outcome"
+  },
+  "list": {
+    "today_title": "Today ({date})",
+    "month_title": "This month ({month})",
+    "empty": "No transactions.",
+    "line": "{date} {time}\n{name} · {type}\n{detail}",
+    "detail_units": "{units} × {price} {currency} · {amount} {currency}",
+    "detail_amount": "{amount} {currency}"
+  },
+  "balance": {
+    "title": "Remaining balance",
+    "income": "Income: {amount} {currency}",
+    "outcome": "Outcome: {amount} {currency}",
+    "remaining": "Remaining: {amount} {currency}",
+    "empty": "No transactions yet."
+  },
+  "delete": {
+    "ask_date": "Which date?\n{month}",
+    "selected_date": "You selected {date}.",
+    "ask_type": "Income or outcome?",
+    "ask_name": "Which name?",
+    "pick": "Select rows to delete.\n{page}",
+    "confirm": "Delete {count} row(s)?",
+    "done": "Deleted {count} row(s).",
+    "none_selected": "Select at least one row.",
+    "button": "Delete ({count})",
+    "page": "{page}/{pages}"
+  },
+  "settings": {
+    "title": "Settings",
+    "currency": "Currency",
+    "language": "Language",
+    "nickname": "Name",
+    "sheet": "Google Sheet",
+    "ask_currency": "Send the currency to show after amounts, such as MMK.",
+    "currency_saved": "Currency set to {currency}.",
+    "ask_nickname": "What should I call you?",
+    "nickname_saved": "I will call you {name}.",
+    "pick_language": "Choose a language.",
+    "language_saved": "Language updated.",
+    "confirm_sheet": "Replace the linked Google Sheet? The old spreadsheet will not be changed.",
+    "sheet_kept": "Kept the current Google Sheet."
+  },
+  "calendar": {
+    "weekdays": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
+  }
+}

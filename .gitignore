@@ -1,0 +1,10 @@
+.env
+bot.db
+service-account.json
+credentials.json
+*-service-account.json
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/

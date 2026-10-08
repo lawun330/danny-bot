@@ -1,0 +1,109 @@
+{
+  "start": {
+    "ask_sheet": "Teile dein Google Sheet mit {email} als Bearbeiter und sende dann den Link.",
+    "ask_sheet_no_email": "Teile dein Google Sheet mit der E-Mail des Dienstkontos als Bearbeiter und sende dann den Link. Die Schlüsseldatei ist auf dem Bot noch nicht eingerichtet.",
+    "sheet_saved": "Tab \"{title}\" wurde erstellt. Bestehende Tabs bleiben unverändert.",
+    "ask_nickname": "Wie soll ich dich nennen?",
+    "ready": "Hallo {name}. Was möchtest du tun?"
+  },
+  "errors": {
+    "bad_url": "Sende einen Google-Sheet-Link, zum Beispiel https://docs.google.com/spreadsheets/d/...",
+    "not_shared": "Ich kann das Sheet nicht öffnen. Teile es mit {email} als Bearbeiter und sende den Link erneut.",
+    "sheet_failed": "Das Sheet konnte nicht eingerichtet werden. Versuche es gleich noch einmal.",
+    "bad_number": "Sende eine Zahl größer als null.",
+    "bad_date": "Sende ein Datum als JJJJ-MM-TT oder wähle unten eines.",
+    "bad_name": "Sende einen Namen mit höchstens 100 Zeichen.",
+    "bad_currency": "Sende eine Währung mit höchstens 16 Zeichen, zum Beispiel MMK.",
+    "no_rows": "Keine passenden Zeilen.",
+    "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "need_setup": "Sende /start, um zuerst ein Google Sheet zu verknüpfen.",
+    "tab_missing": "Der Transaktionen-Tab fehlt. Verknüpfe das Sheet erneut unter Einstellungen.",
+    "sheet_changed": "Diese Zeilen haben sich geändert. Starte Löschen erneut.",
+    "no_credentials": "Der Google-Dienstkonto-Schlüssel fehlt auf dem Bot."
+  },
+  "menu": {
+    "income": "Einnahme",
+    "outcome": "Ausgabe",
+    "today": "Heute",
+    "month": "Dieser Monat",
+    "balance": "Restguthaben",
+    "delete": "Löschen",
+    "settings": "Einstellungen"
+  },
+  "income": {
+    "ask_name": "Wie lautet der Name?",
+    "ask_amount": "Wie hoch ist der Betrag?",
+    "saved": "Einnahme gespeichert: {name}, {amount} {currency}."
+  },
+  "outcome": {
+    "ask_name": "Wie lautet der Name?",
+    "ask_units": "Wie viele Einheiten?",
+    "ask_price": "Wie hoch ist der Einzelpreis?",
+    "ask_amount": "Wie hoch ist der Betrag?",
+    "confirm_amount": "Der Betrag ist {amount} {currency}. Bestätige ihn oder gib einen anderen Betrag ein.",
+    "saved": "Ausgabe gespeichert: {name}, {amount} {currency}."
+  },
+  "common": {
+    "skip": "Überspringen",
+    "not_applicable": "Nicht zutreffend",
+    "confirm": "Bestätigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "idk": "Weiß nicht",
+    "cancel": "Abbrechen",
+    "cancelled": "Abgebrochen.",
+    "back": "Zurück",
+    "all": "Alle",
+    "prev": "Voriger Monat",
+    "next": "Nächster Monat",
+    "page_prev": "Vorherige",
+    "page_next": "Nächste",
+    "income_type": "Einnahme",
+    "outcome_type": "Ausgabe"
+  },
+  "list": {
+    "today_title": "Heute ({date})",
+    "month_title": "Dieser Monat ({month})",
+    "empty": "Keine Buchungen.",
+    "line": "{date} {time}\n{name} · {type}\n{detail}",
+    "detail_units": "{units} × {price} {currency} · {amount} {currency}",
+    "detail_amount": "{amount} {currency}"
+  },
+  "balance": {
+    "title": "Restguthaben",
+    "income": "Einnahmen: {amount} {currency}",
+    "outcome": "Ausgaben: {amount} {currency}",
+    "remaining": "Rest: {amount} {currency}",
+    "empty": "Noch keine Buchungen."
+  },
+  "delete": {
+    "ask_date": "Welches Datum?\n{month}",
+    "selected_date": "Du hast {date} gewählt.",
+    "ask_type": "Einnahme oder Ausgabe?",
+    "ask_name": "Welcher Name?",
+    "pick": "Wähle die Zeilen zum Löschen.\n{page}",
+    "confirm": "{count} Zeile(n) löschen?",
+    "done": "{count} Zeile(n) gelöscht.",
+    "none_selected": "Wähle mindestens eine Zeile.",
+    "button": "Löschen ({count})",
+    "page": "{page}/{pages}"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "currency": "Währung",
+    "language": "Sprache",
+    "nickname": "Name",
+    "sheet": "Google Sheet",
+    "ask_currency": "Sende die Währung, die nach Beträgen stehen soll, zum Beispiel MMK.",
+    "currency_saved": "Währung ist jetzt {currency}.",
+    "ask_nickname": "Wie soll ich dich nennen?",
+    "nickname_saved": "Ich nenne dich {name}.",
+    "pick_language": "Wähle eine Sprache.",
+    "language_saved": "Sprache aktualisiert.",
+    "confirm_sheet": "Das verknüpfte Google Sheet ersetzen? Das alte Spreadsheet wird nicht verändert.",
+    "sheet_kept": "Das aktuelle Google Sheet bleibt verknüpft."
+  },
+  "calendar": {
+    "weekdays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+  }
+}
