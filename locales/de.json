@@ -1,23 +1,23 @@
 {
   "start": {
-    "ask_sheet": "Teile dein Google Sheet mit {email} als Bearbeiter und sende dann den Link.",
-    "ask_sheet_no_email": "Teile dein Google Sheet mit der E-Mail des Dienstkontos als Bearbeiter und sende dann den Link. Die Schlüsseldatei ist auf dem Bot noch nicht eingerichtet.",
-    "sheet_saved": "Tab \"{title}\" wurde erstellt. Bestehende Tabs bleiben unverändert.",
+    "ask_sheet": "Teile dein Google-Sheets-Spreadsheet mit {email} als Bearbeiter und sende dann die Spreadsheet-URL.",
+    "ask_sheet_no_email": "Teile dein Spreadsheet mit der E-Mail des Dienstkontos als Bearbeiter und sende dann die Spreadsheet-URL. Die Schlüsseldatei ist auf dem Bot noch nicht eingerichtet.",
+    "sheet_saved": "Sheet \"{title}\" im Spreadsheet erstellt. Bestehende Sheets wurden nicht verändert.",
     "ask_nickname": "Wie soll ich dich nennen?",
     "ready": "Hallo {name}. Was möchtest du tun?"
   },
   "errors": {
-    "bad_url": "Sende einen Google-Sheet-Link, zum Beispiel https://docs.google.com/spreadsheets/d/...",
-    "not_shared": "Ich kann das Sheet nicht öffnen. Teile es mit {email} als Bearbeiter und sende den Link erneut.",
-    "sheet_failed": "Das Sheet konnte nicht eingerichtet werden. Versuche es gleich noch einmal.",
+    "bad_url": "Sende einen Google-Sheets-Spreadsheet-Link, zum Beispiel https://docs.google.com/spreadsheets/d/...",
+    "not_shared": "Ich kann dieses Spreadsheet nicht öffnen. Teile es mit {email} als Bearbeiter und sende den Link erneut.",
+    "sheet_failed": "Ich konnte das Spreadsheet nicht einrichten. Versuche es gleich noch einmal.",
     "bad_number": "Sende eine Zahl größer als null.",
     "bad_date": "Sende ein Datum als JJJJ-MM-TT oder wähle unten eines.",
     "bad_name": "Sende einen Namen mit höchstens 100 Zeichen.",
     "bad_currency": "Sende eine Währung mit höchstens 16 Zeichen, zum Beispiel MMK.",
     "no_rows": "Keine passenden Zeilen.",
     "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-    "need_setup": "Sende /start, um zuerst ein Google Sheet zu verknüpfen.",
-    "tab_missing": "Der Transaktionen-Tab fehlt. Verknüpfe das Sheet erneut unter Einstellungen.",
+    "need_setup": "Sende /start, um zuerst ein Spreadsheet zu verknüpfen.",
+    "tab_missing": "Das Transactions-Sheet fehlt. Verknüpfe unter Einstellungen erneut ein Spreadsheet.",
     "sheet_changed": "Diese Zeilen haben sich geändert. Starte Löschen erneut.",
     "no_credentials": "Der Google-Dienstkonto-Schlüssel fehlt auf dem Bot."
   },
@@ -98,15 +98,15 @@
     "currency": "Währung ändern",
     "language": "Sprache ändern",
     "nickname": "Name ändern",
-    "sheet": "Google Sheet ändern",
+    "sheet": "Spreadsheet ändern",
     "ask_currency": "Sende die Währung, die nach Beträgen stehen soll, zum Beispiel MMK.",
     "currency_saved": "Währung aktualisiert auf {currency}.",
     "ask_nickname": "Wie soll ich dich nennen?",
     "nickname_saved": "Ich nenne dich {name}.",
     "pick_language": "Wähle eine Sprache.",
     "language_saved": "Sprache aktualisiert.",
-    "confirm_sheet": "Das verknüpfte Google Sheet ersetzen? Das alte Spreadsheet wird nicht verändert.",
-    "sheet_kept": "Das Google Sheet wurde nicht aktualisiert."
+    "confirm_sheet": "Das verknüpfte Spreadsheet ersetzen? Daten im alten Spreadsheet werden nicht geändert oder gelöscht.",
+    "sheet_kept": "Das aktuelle Spreadsheet wird weiter verwendet."
   },
   "calendar": {
     "weekdays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]

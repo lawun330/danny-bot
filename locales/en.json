@@ -1,23 +1,23 @@
 {
   "start": {
-    "ask_sheet": "Share your Google Sheet with {email} as Editor, then send the sheet URL.",
-    "ask_sheet_no_email": "Share your Google Sheet with the service account email as Editor, then send the sheet URL. The key file is not set up on the bot yet.",
-    "sheet_saved": "Created tab \"{title}\". Existing tabs were left unchanged.",
+    "ask_sheet": "Share your Google Sheets spreadsheet with {email} as Editor, then send the spreadsheet URL.",
+    "ask_sheet_no_email": "Share your spreadsheet with the service account email as Editor, then send the spreadsheet URL. The key file is not set up on the bot yet.",
+    "sheet_saved": "Created sheet \"{title}\" within the spreadsheet. Existing sheets were not touched.",
     "ask_nickname": "What should I call you?",
     "ready": "Hi {name}. What would you like to do?"
   },
   "errors": {
-    "bad_url": "Send a Google Sheet link, like https://docs.google.com/spreadsheets/d/...",
-    "not_shared": "I cannot open that sheet. Share it with {email} as Editor, then send the URL again.",
-    "sheet_failed": "I could not set up the sheet. Try again in a moment.",
+    "bad_url": "Send a Google Sheets spreadsheet link, like https://docs.google.com/spreadsheets/d/...",
+    "not_shared": "I cannot open that spreadsheet. Share it with {email} as Editor, then send the URL again.",
+    "sheet_failed": "I could not set up the spreadsheet. Try again in a moment.",
     "bad_number": "Send a number greater than zero.",
     "bad_date": "Send a date as YYYY-MM-DD, or pick one below.",
     "bad_name": "Send a name up to 100 characters.",
     "bad_currency": "Send a currency up to 16 characters, such as MMK.",
     "no_rows": "No matching rows.",
     "generic": "Something went wrong. Please try again.",
-    "need_setup": "Send /start to link a Google Sheet first.",
-    "tab_missing": "The transactions tab is missing. Link a sheet again from Settings.",
+    "need_setup": "Send /start to link a spreadsheet first.",
+    "tab_missing": "The transactions sheet is missing. Link a spreadsheet again from Settings.",
     "sheet_changed": "Those rows changed. Start Delete again.",
     "no_credentials": "The Google service account key is missing on the bot."
   },
@@ -98,15 +98,15 @@
     "currency": "Change Currency",
     "language": "Change Language",
     "nickname": "Change Name",
-    "sheet": "Change Google Sheet",
+    "sheet": "Change spreadsheet",
     "ask_currency": "Send the currency to show after amounts, such as MMK.",
     "currency_saved": "Currency updated to {currency}.",
     "ask_nickname": "What should I call you?",
     "nickname_saved": "I will call you {name}.",
     "pick_language": "Select a language.",
     "language_saved": "Language updated.",
-    "confirm_sheet": "Replace the linked Google Sheet? The old spreadsheet will not be changed.",
-    "sheet_kept": "The Google Sheet is not updated."
+    "confirm_sheet": "Replace the linked spreadsheet? Data will not be changed or deleted from the old spreadsheet.",
+    "sheet_kept": "The current spreadsheet is still in use."
   },
   "calendar": {
     "weekdays": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]

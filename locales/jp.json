@@ -1,23 +1,23 @@
 {
   "start": {
-    "ask_sheet": "Google シートを {email} に編集者として共有してから、シートの URL を送ってください。",
-    "ask_sheet_no_email": "Google シートをサービスアカウントのメールアドレスに編集者として共有してから、URL を送ってください。ボット側の鍵ファイルはまだ設定されていません。",
-    "sheet_saved": "タブ「{title}」を作成しました。既存のタブはそのままです。",
+    "ask_sheet": "Google Sheets のスプレッドシートを {email} に編集者として共有してから、スプレッドシートの URL を送ってください。",
+    "ask_sheet_no_email": "スプレッドシートをサービスアカウントのメールアドレスに編集者として共有してから、スプレッドシートの URL を送ってください。ボット側の鍵ファイルはまだ設定されていません。",
+    "sheet_saved": "スプレッドシート内にシート「{title}」を作成しました。既存のシートには触れていません。",
     "ask_nickname": "何とお呼びすればよいですか？",
     "ready": "{name} さん、こんにちは。何をしますか？"
   },
   "errors": {
-    "bad_url": "Google シートのリンクを送ってください。例: https://docs.google.com/spreadsheets/d/...",
-    "not_shared": "そのシートを開けません。{email} に編集者として共有してから、URL をもう一度送ってください。",
-    "sheet_failed": "シートを準備できませんでした。しばらくしてからもう一度お試しください。",
+    "bad_url": "Google Sheets のスプレッドシートのリンクを送ってください。例: https://docs.google.com/spreadsheets/d/...",
+    "not_shared": "そのスプレッドシートを開けません。{email} に編集者として共有してから、URL をもう一度送ってください。",
+    "sheet_failed": "スプレッドシートを準備できませんでした。しばらくしてからもう一度お試しください。",
     "bad_number": "0 より大きい数値を送ってください。",
     "bad_date": "日付は YYYY-MM-DD で送るか、下から選んでください。",
     "bad_name": "名前は 100 文字以内で送ってください。",
     "bad_currency": "通貨は 16 文字以内で送ってください。例: MMK。",
     "no_rows": "一致する行がありません。",
     "generic": "問題が起きました。もう一度お試しください。",
-    "need_setup": "先に /start を送って Google シートを連携してください。",
-    "tab_missing": "取引タブが見つかりません。設定からシートを連携し直してください。",
+    "need_setup": "先に /start を送ってスプレッドシートを連携してください。",
+    "tab_missing": "取引シートが見つかりません。設定からスプレッドシートを連携し直してください。",
     "sheet_changed": "行の内容が変わりました。削除をはじめからやり直してください。",
     "no_credentials": "ボットに Google サービスアカウントの鍵がありません。"
   },
@@ -98,15 +98,15 @@
     "currency": "通貨を変更",
     "language": "言語を変更",
     "nickname": "呼び名を変更",
-    "sheet": "Google シートを変更",
+    "sheet": "スプレッドシートを変更",
     "ask_currency": "金額のうしろに表示する通貨を送ってください。例: MMK。",
     "currency_saved": "通貨を {currency} に更新しました。",
     "ask_nickname": "何とお呼びすればよいですか？",
     "nickname_saved": "{name} とお呼びします。",
     "pick_language": "言語を選んでください。",
     "language_saved": "言語を更新しました。",
-    "confirm_sheet": "連携中の Google シートを替えますか？古いスプレッドシートは変更しません。",
-    "sheet_kept": "Google シートは更新されていません。"
+    "confirm_sheet": "連携中のスプレッドシートを替えますか？古いスプレッドシートのデータは変更・削除しません。",
+    "sheet_kept": "現在のスプレッドシートを引き続き使用します。"
   },
   "calendar": {
     "weekdays": ["月", "火", "水", "木", "金", "土", "日"]
