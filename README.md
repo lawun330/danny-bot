@@ -29,7 +29,15 @@ Link your Google Sheet, and I'll handle the rest. I create a dedicated sheet to 
 - **Delete Rows** — filter by date; if "I don't know" → filter by description; if "I don't know" → no filter; then income / outcome / all. Multi-select rows, confirm, and those rows are removed so later rows move up.
 - **Settings** — change currency, language (English, Burmese, German, Japanese), the name the bot uses, or the linked spreadsheet. Replacing the spreadsheet asks for confirmation and leaves the old spreadsheet unchanged.
 
-## Setup
+## Hosting (recommended: Cloudflare Workers, free)
+
+Production runs as a **Telegram webhook** Worker under [`worker/`](worker/). User settings live in Cloudflare **D1**; transactions stay in Google Sheets. See [`worker/README.md`](worker/README.md) for deploy, secrets, D1, and `setWebhook`.
+
+Do **not** also run polling (`python -m bot.main` or a Render Background Worker) with the same bot token, or Telegram returns `409 Conflict`.
+
+Render free Web Services are a poor fit (no HTTP port + sleep). Prefer the Worker for $0 always-on.
+
+## Setup (local Python polling, optional)
 
 1. Create a bot with [@BotFather](https://t.me/BotFather) and copy the token.
 2. In Google Cloud, create a service account, enable the Google Sheets API, and download the JSON key. Save it as `service-account.json` in this folder. Do not commit it.
@@ -39,9 +47,9 @@ Link your Google Sheet, and I'll handle the rest. I create a dedicated sheet to 
     cp .env.example .env
     ```
 
-    `TELEGRAM_BOT_TOKEN` is the BotFather token. `TIMEZONE` defaults to `Asia/Yangon`. User settings (nickname, language, currency, spreadsheet id, sheet id) live in local `bot.db`. Transaction rows stay only in the spreadsheet.
+    `TELEGRAM_BOT_TOKEN` is the BotFather token. `TIMEZONE` defaults to `Asia/Yangon`. User settings (nickname, language, currency, spreadsheet id, sheet id) live in local `bot.db` when using Python. Transaction rows stay only in the spreadsheet.
 
-4. Activate the conda env, install, and run:
+4. Activate the conda env, install, and run (**stop the Cloudflare webhook first** if the same token is deployed):
 
     ```bash
     conda activate danny_bot_env

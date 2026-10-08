@@ -1,0 +1,114 @@
+{
+  "start": {
+    "ask_sheet": "Teile dein Google-Sheets-Spreadsheet mit {email} als Bearbeiter und sende dann die Spreadsheet-URL.",
+    "ask_sheet_no_email": "Teile dein Spreadsheet mit der E-Mail des Dienstkontos als Bearbeiter und sende dann die Spreadsheet-URL. Die Schlüsseldatei ist auf dem Bot noch nicht eingerichtet.",
+    "sheet_saved": "Sheet \"{title}\" im Spreadsheet erstellt. Bestehende Sheets wurden nicht verändert.",
+    "ask_nickname": "Wie soll ich dich nennen?",
+    "ready": "Hallo {name}. Was möchtest du tun?"
+  },
+  "errors": {
+    "bad_url": "Sende einen Google-Sheets-Spreadsheet-Link, zum Beispiel https://docs.google.com/spreadsheets/d/...",
+    "not_shared": "Ich kann dieses Spreadsheet nicht öffnen. Teile es mit {email} als Bearbeiter und sende den Link erneut.",
+    "sheet_failed": "Ich konnte das Spreadsheet nicht einrichten. Versuche es gleich noch einmal.",
+    "bad_number": "Sende eine Zahl größer als null.",
+    "bad_date": "Sende ein Datum als JJJJ-MM-TT oder wähle unten eines.",
+    "bad_name": "Sende einen Namen mit höchstens 100 Zeichen.",
+    "bad_currency": "Sende eine Währung mit höchstens 16 Zeichen, zum Beispiel MMK.",
+    "no_rows": "Keine passenden Zeilen.",
+    "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "need_setup": "Sende /start, um zuerst ein Spreadsheet zu verknüpfen.",
+    "tab_missing": "Das Transactions-Sheet fehlt. Verknüpfe unter Einstellungen erneut ein Spreadsheet.",
+    "sheet_changed": "Diese Zeilen haben sich geändert. Starte Löschen erneut.",
+    "no_credentials": "Der Google-Dienstkonto-Schlüssel fehlt auf dem Bot."
+  },
+  "menu": {
+    "income": "Einnahme hinzufügen",
+    "outcome": "Ausgabe hinzufügen",
+    "today": "Heutige Ausgaben",
+    "month": "Monatliche Ausgaben",
+    "balance": "Gesamtsaldo",
+    "delete": "Zeilen löschen",
+    "settings": "Einstellungen"
+  },
+  "income": {
+    "ask_name": "Wie lautet die Beschreibung für diese Einnahme?",
+    "ask_amount": "Wie hoch ist der Gesamtbetrag?",
+    "confirm_amount": "Der Betrag ist {amount} {currency}. Bestätige ihn oder gib einen anderen Betrag ein.",
+    "saved": "Einnahme gespeichert: {name}, {amount} {currency}."
+  },
+  "outcome": {
+    "ask_name": "Wie lautet die Beschreibung für diese Ausgabe?",
+    "ask_units": "Wie viele Einheiten?",
+    "ask_price": "Wie hoch ist der Einzelbetrag?",
+    "ask_amount": "Wie hoch ist der Gesamtbetrag?",
+    "confirm_amount": "Der Betrag ist {amount} {currency}. Bestätige ihn oder gib einen anderen Betrag ein.",
+    "saved": "Ausgabe gespeichert: {name}, {amount} {currency}."
+  },
+  "common": {
+    "skip": "Überspringen",
+    "not_applicable": "Nicht zutreffend",
+    "confirm": "Bestätigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "idk": "Weiß nicht",
+    "cancel": "Abbrechen",
+    "cancelled": "Abgebrochen.",
+    "back": "Zurück",
+    "all": "Alle",
+    "prev": "Voriger Monat",
+    "next": "Nächster Monat",
+    "page_prev": "Vorherige",
+    "page_next": "Nächste",
+    "prev_year": "Voriges Jahr",
+    "next_year": "Nächstes Jahr",
+    "income_type": "Einnahme",
+    "outcome_type": "Ausgabe"
+  },
+  "list": {
+    "today_title": "Heute ({date})",
+    "month_title": "Monat ({month})",
+    "pick_month": "Wähle einen Monat für {year}.",
+    "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+    "empty": "Keine Buchungen.",
+    "line": "{date} {time}\n{name} · {type}\n{detail}",
+    "detail_units": "{units} × {price} {currency} · {amount} {currency}",
+    "detail_amount": "{amount} {currency}"
+  },
+  "balance": {
+    "title": "Restguthaben",
+    "income": "Einnahmen: {amount} {currency}",
+    "outcome": "Ausgaben: {amount} {currency}",
+    "remaining": "Rest: {amount} {currency}",
+    "empty": "Noch keine Buchungen."
+  },
+  "delete": {
+    "ask_date": "Welches Datum?\n{month}",
+    "selected_date": "Du hast {date} gewählt.",
+    "ask_type": "Einnahme oder Ausgabe?",
+    "ask_name": "Wie lautet die Beschreibung?",
+    "pick": "Wähle die Zeilen zum Löschen.\n{page}",
+    "confirm": "{count} Zeile(n) löschen?",
+    "done": "{count} Zeile(n) gelöscht.",
+    "none_selected": "Wähle mindestens eine Zeile.",
+    "button": "Löschen ({count})",
+    "page": "{page}/{pages}"
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "currency": "Währung ändern",
+    "language": "Sprache ändern",
+    "nickname": "Name ändern",
+    "sheet": "Spreadsheet ändern",
+    "ask_currency": "Sende die Währung, die nach Beträgen stehen soll, zum Beispiel MMK.",
+    "currency_saved": "Währung aktualisiert auf {currency}.",
+    "ask_nickname": "Wie soll ich dich nennen?",
+    "nickname_saved": "Ich nenne dich {name}.",
+    "pick_language": "Wähle eine Sprache.",
+    "language_saved": "Sprache aktualisiert.",
+    "confirm_sheet": "Das verknüpfte Spreadsheet ersetzen? Daten im alten Spreadsheet werden nicht geändert oder gelöscht.",
+    "sheet_kept": "Das aktuelle Spreadsheet wird weiter verwendet."
+  },
+  "calendar": {
+    "weekdays": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"]
+  }
+}

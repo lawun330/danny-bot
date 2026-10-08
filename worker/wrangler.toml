@@ -1,0 +1,13 @@
+name = "danny-bot"
+main = "src/index.ts"
+compatibility_date = "2025-03-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "danny-bot"
+database_id = "6c820d6a-5c8c-4462-96d5-4ae380c27c52"
+migrations_dir = "migrations"
+
+[vars]
+TIMEZONE = "Asia/Yangon"
