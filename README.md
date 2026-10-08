@@ -1,21 +1,33 @@
 # danny-bot
 
-Telegram ledger bot. Each person links their own Google Sheet. The bot adds a new tab and records income and outcome there.
+<img align="left" src="profile/img/profile2.jpeg" width="250" height="250" alt="profile">
+<br><br>
+Hi! I'm Danny, the Money Monkey 🐵, your Telegram ledger bot.
+<br><br>
+Link your Google Sheet, and I'll handle the rest. I create a dedicated sheet to automatically log every income and expense for you. To get started, find me on Telegram at:
+<br><br>
 
-## What it does
+```
+@danny_ledger_bot
+```
+<br clear="left">
 
-On `/start`, the bot asks for a Google Sheet URL once. It creates a tab named `Transactions` (or `Transactions 2` if that name exists) and does not change existing tabs. Then it asks what to call you.
 
-The menu:
+## Commands
 
-- **Income** — optional name (skip stores `Income`), then amount. Units and unit price stay blank.
-- **Outcome** — optional name (skip stores `Outcome`), optional units, optional unit price. If both numbers are filled, the bot shows units × unit price and you can confirm or type another amount. If either is skipped, it asks for the amount.
-- **Today** and **This month** — rows for the current day or month in the configured timezone.
-- **Remaining balance** — all income minus all outcome.
-- **Delete** — filter by date, or by name, then by income, outcome, or all. Pick rows, confirm, and those rows are removed so later rows move up.
-- **Settings** — currency, language (English, Burmese, German, Japanese), the name the bot uses, and replacing the linked sheet. Replacing the sheet asks for confirmation and leaves the old spreadsheet unchanged.
+- `/start` — If no spreadsheet is linked yet, asks for the spreadsheet URL. Creates a sheet named **Transactions** (or **Transactions 2** if that name exists) and does not change existing sheets. Headers stay English: Date, Time, Name, Type, Unit Amount, Units, Amount. Then asks what to call you. Later `/start` skips spreadsheet setup if it is already linked.
+- `/menu` — Opens the main menu.
+- `/cancel` — Stops the current question and returns to the menu (when setup is done).
 
-`/menu` opens the menu. `/cancel` stops the current question.
+## Menu
+
+- **Add Income** — optional description (Skip stores `Income`), then total amount, then confirm (or type a different amount). Unit amount and units stay blank.
+- **Add Outcome** — optional description (Skip stores `Outcome`), optional units, optional unit amount. If both numbers are filled, the bot shows "units × unit amount" and you can confirm or type another amount. If either is skipped, it asks for the total amount.
+- **Today Expenses** — rows for today in the configured timezone.
+- **Monthly Expenses** — pick a year with Previous year / Next year, then a month (newest month at the top). Lists that month's rows.
+- **Total Balance** — all income minus all outcome, plus the two totals.
+- **Delete Rows** — filter by date; if "I don't know" → filter by description; if "I don't know" → no filter; then income / outcome / all. Multi-select rows, confirm, and those rows are removed so later rows move up.
+- **Settings** — change currency, language (English, Burmese, German, Japanese), the name the bot uses, or the linked spreadsheet. Replacing the spreadsheet asks for confirmation and leaves the old spreadsheet unchanged.
 
 ## Setup
 
@@ -23,44 +35,52 @@ The menu:
 2. In Google Cloud, create a service account, enable the Google Sheets API, and download the JSON key. Save it as `service-account.json` in this folder. Do not commit it.
 3. Copy the environment file and fill it in:
 
-```bash
-cp .env.example .env
-```
+    ```bash
+    cp .env.example .env
+    ```
 
-`TELEGRAM_BOT_TOKEN` is the BotFather token. `TIMEZONE` defaults to `Asia/Yangon`, which is what "today" and "this month" use. User settings (linked sheet id, nickname, language, currency) are stored in a local `bot.db` file next to the project. Transaction rows stay only in Google Sheets.
+    `TELEGRAM_BOT_TOKEN` is the BotFather token. `TIMEZONE` defaults to `Asia/Yangon`. User settings (nickname, language, currency, spreadsheet id, sheet id) live in local `bot.db`. Transaction rows stay only in the spreadsheet.
 
 4. Activate the conda env, install, and run:
 
-```bash
-conda activate danny_bot_env
-pip install -r requirements.txt
-python -m bot.main
-```
+    ```bash
+    conda activate danny_bot_env
+    pip install -r requirements.txt
+    python -m bot.main
+    ```
 
 5. In Google Sheets, share the spreadsheet with the service account email (`client_email` in the key file) as **Editor**.
 6. Open the bot, send `/start`, and paste the spreadsheet URL.
 
-Chat text comes from `locales/en.json`, `locales/mm.json`, `locales/de.json`, and `locales/jp.json`. Sheet headers stay in English: Date, Time, Name, Type, Unit Amount, Units, Amount.
-
 ## Tests
 
 ```bash
+conda activate danny_bot_env
 python -m unittest discover -s tests -v
 ```
 
-## Lint before commit
+## Lint
 
-Ruff runs automatically on each commit via pre-commit:
+- Ruff runs on each commit via pre-commit:
 
-```bash
-conda activate danny_bot_env
-pip install pre-commit ruff
-pre-commit install
-```
+    ```bash
+    conda activate danny_bot_env
+    pip install pre-commit ruff
+    pre-commit install
+    ```
 
-Manual check:
+- Manual check:
 
-```bash
-ruff check --fix bot tests
-ruff format bot tests
-```
+    ```bash
+    ruff check --fix bot tests
+    ruff format bot tests
+    ```
+
+## Note
+
+- Question flows include **Back** and **Cancel**.
+- Dates use `TIMEZONE`.
+- Chat text comes from `locales/en.json`, `locales/mm.json`, `locales/de.json`, and `locales/jp.json`. Sheet headers stay in English.
+- Convention:
+    - Google Sheets spreadsheet, spreadsheet = the file;
+    - sheet = a sheet inside it.
