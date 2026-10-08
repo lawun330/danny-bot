@@ -1,4 +1,4 @@
-# danny-bot
+# Danny Bot: Track Expenses on Telegram
 
 <img align="left" src="profile/img/profile2.jpeg" width="250" height="250" alt="profile">
 <br><br>
