@@ -5,3 +5,18 @@ repos:
       - id: ruff
         args: [--fix]
       - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: eslint
+        name: eslint (worker)
+        language: system
+        entry: npm --prefix worker run lint:fix
+        files: ^worker/.*\.[cm]?[jt]sx?$
+        pass_filenames: false
+      - id: prettier
+        name: prettier (worker)
+        language: system
+        entry: npm --prefix worker run format
+        files: ^worker/.*\.(js|mjs|cjs|ts|tsx|json|md|yml|yaml)$
+        pass_filenames: false
