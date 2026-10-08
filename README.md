@@ -40,7 +40,7 @@ python -m bot.main
 5. In Google Sheets, share the spreadsheet with the service account email (`client_email` in the key file) as **Editor**.
 6. Open the bot, send `/start`, and paste the spreadsheet URL.
 
-Chat text comes from `locales/en.json`, `locales/my.json`, `locales/de.json`, and `locales/ja.json`. Sheet headers stay in English: Date, Time, Name, Type, Unit Amount, Units, Amount.
+Chat text comes from `locales/en.json`, `locales/mm.json`, `locales/de.json`, and `locales/jp.json`. Sheet headers stay in English: Date, Time, Name, Type, Unit Amount, Units, Amount.
 
 ## Tests
 

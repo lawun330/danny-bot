@@ -4,7 +4,7 @@ import json
 
 from bot import config
 
-_LANGS = ("en", "my", "de", "ja")
+_LANGS = ("en", "mm", "de", "jp")
 _CATALOGS: dict[str, dict] = {}
 
 

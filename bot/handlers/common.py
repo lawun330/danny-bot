@@ -13,7 +13,7 @@ from bot.ledger import Entry, format_number
 
 logger = logging.getLogger(__name__)
 
-LANGS = {"en", "my", "de", "ja"}
+LANGS = {"en", "mm", "de", "jp"}
 
 
 def lang_of(user: dict | None) -> str:

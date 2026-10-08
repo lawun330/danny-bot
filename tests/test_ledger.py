@@ -144,7 +144,7 @@ class LedgerTests(unittest.TestCase):
     def test_locale_keys_match_english(self):
         catalogs = {
             code: json.loads((ROOT / "locales" / f"{code}.json").read_text(encoding="utf-8"))
-            for code in ("en", "my", "de", "ja")
+            for code in ("en", "mm", "de", "jp")
         }
 
         def keys(node, prefix=""):
@@ -163,7 +163,7 @@ class LedgerTests(unittest.TestCase):
         self.assertIn("menu.income", english)
         self.assertEqual(i18n.t("en", "menu.income"), "Add Income")
         self.assertEqual(i18n.t("missing", "menu.delete"), i18n.t("en", "menu.delete"))
-        self.assertEqual(len(i18n.t_list("ja", "calendar.weekdays")), 7)
+        self.assertEqual(len(i18n.t_list("jp", "calendar.weekdays")), 7)
         self.assertEqual(len(i18n.t_list("en", "list.months")), 12)
         self.assertIn("confirm_amount", i18n._lookup("en", "income"))
 

@@ -10,9 +10,9 @@ from bot.ledger import Entry, format_number, shift_month
 PAGE_SIZE = 6
 LANGUAGE_LABELS = {
     "English": "en",
-    "မြန်မာ": "my",
+    "မြန်မာ": "mm",
     "Deutsch": "de",
-    "日本語": "ja",
+    "日本語": "jp",
 }
 
 
